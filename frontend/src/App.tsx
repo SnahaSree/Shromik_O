@@ -1,122 +1,151 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
+import { LanguageProvider } from "./context/LanguageContext";
+import Layout from "./components/layout/Layout";
+import PageTransition from "./components/common/PageTransition";
+import PlaceholderPage from "./pages/PlaceholderPage";
+
+function AnimatedRoutes() {
+  const location = useLocation();
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
 
-      <div className="ticks"></div>
+        <Route element={<Layout />}>
+          <Route
+            path="/"
+            element={
+              <PageTransition>
+                <PlaceholderPage
+                  title="Welcome to Shromik"
+                  subtitle="A better future for Bangladesh's construction workforce starts here."
+                />
+              </PageTransition>
+            }
+          />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          <Route
+            path="/problem"
+            element={
+              <PageTransition>
+                <PlaceholderPage
+                  title="The Problem"
+                  subtitle="Understanding the challenges facing construction workers in Bangladesh."
+                />
+              </PageTransition>
+            }
+          />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+          <Route
+            path="/solution"
+            element={
+              <PageTransition>
+                <PlaceholderPage
+                  title="Our Solution"
+                  subtitle="Connecting skilled workers with trusted contractors."
+                />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/impact"
+            element={
+              <PageTransition>
+                <PlaceholderPage
+                  title="Our Impact"
+                  subtitle="Building a measurable impact on Bangladesh's workforce."
+                />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/team"
+            element={
+              <PageTransition>
+                <PlaceholderPage
+                  title="Meet Our Team"
+                  subtitle="The people working to build a better workforce ecosystem."
+                />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/roadmap"
+            element={
+              <PageTransition>
+                <PlaceholderPage
+                  title="Our Roadmap"
+                  subtitle="Our journey toward transforming construction employment."
+                />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/contact"
+            element={
+              <PageTransition>
+                <PlaceholderPage
+                  title="Contact Shromik"
+                  subtitle="Let's work together to build a better future."
+                />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <PageTransition>
+                <PlaceholderPage
+                  title="Welcome Back"
+                  subtitle="Your Shromik account login will be available soon."
+                />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/signup"
+            element={
+              <PageTransition>
+                <PlaceholderPage
+                  title="Join Shromik"
+                  subtitle="Create your worker or contractor account."
+                />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="*"
+            element={
+              <PageTransition>
+                <PlaceholderPage
+                  title="404 - Page Not Found"
+                  subtitle="The page you are looking for does not exist."
+                />
+              </PageTransition>
+            }
+          />
+        </Route>
+      </Routes>
+    </AnimatePresence>
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <LanguageProvider>
+        <AnimatedRoutes />
+      </LanguageProvider>
+    </BrowserRouter>
+  );
+}
