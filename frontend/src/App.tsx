@@ -1,5 +1,11 @@
 
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+
 import { AnimatePresence } from "framer-motion";
 
 import { LanguageProvider } from "./context/LanguageContext";
@@ -7,96 +13,55 @@ import Layout from "./components/layout/Layout";
 import PageTransition from "./components/common/PageTransition";
 import PlaceholderPage from "./pages/PlaceholderPage";
 
+import Home from "./pages/public/Home";
+import Problem from "./pages/public/Problem";
+import Solution from "./pages/public/Solution";
+import Impact from "./pages/public/Impact";
+import Team from "./pages/public/Team";
+import Roadmap from "./pages/public/Roadmap";
+import Contact from "./pages/public/Contact";
+
 function AnimatedRoutes() {
   const location = useLocation();
 
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-
         <Route element={<Layout />}>
+
           <Route
             path="/"
-            element={
-              <PageTransition>
-                <PlaceholderPage
-                  title="Welcome to Shromik"
-                  subtitle="A better future for Bangladesh's construction workforce starts here."
-                />
-              </PageTransition>
-            }
+            element={<PageTransition><Home /></PageTransition>}
           />
 
           <Route
             path="/problem"
-            element={
-              <PageTransition>
-                <PlaceholderPage
-                  title="The Problem"
-                  subtitle="Understanding the challenges facing construction workers in Bangladesh."
-                />
-              </PageTransition>
-            }
+            element={<PageTransition><Problem /></PageTransition>}
           />
 
           <Route
             path="/solution"
-            element={
-              <PageTransition>
-                <PlaceholderPage
-                  title="Our Solution"
-                  subtitle="Connecting skilled workers with trusted contractors."
-                />
-              </PageTransition>
-            }
+            element={<PageTransition><Solution /></PageTransition>}
           />
 
           <Route
             path="/impact"
-            element={
-              <PageTransition>
-                <PlaceholderPage
-                  title="Our Impact"
-                  subtitle="Building a measurable impact on Bangladesh's workforce."
-                />
-              </PageTransition>
-            }
+            element={<PageTransition><Impact /></PageTransition>}
           />
 
           <Route
             path="/team"
-            element={
-              <PageTransition>
-                <PlaceholderPage
-                  title="Meet Our Team"
-                  subtitle="The people working to build a better workforce ecosystem."
-                />
-              </PageTransition>
-            }
+            element={<PageTransition><Team /></PageTransition>}
           />
 
           <Route
             path="/roadmap"
-            element={
-              <PageTransition>
-                <PlaceholderPage
-                  title="Our Roadmap"
-                  subtitle="Our journey toward transforming construction employment."
-                />
-              </PageTransition>
-            }
+            element={<PageTransition><Roadmap /></PageTransition>}
           />
 
           <Route
             path="/contact"
-            element={
-              <PageTransition>
-                <PlaceholderPage
-                  title="Contact Shromik"
-                  subtitle="Let's work together to build a better future."
-                />
-              </PageTransition>
-            }
+            element={<PageTransition><Contact /></PageTransition>}
           />
 
           <Route
@@ -134,6 +99,7 @@ function AnimatedRoutes() {
               </PageTransition>
             }
           />
+
         </Route>
       </Routes>
     </AnimatePresence>
